@@ -5,12 +5,14 @@ class ColorManager {
   static const int _accentColorValue = 0xff2A75BC;
   static const int _backgroundColorValue = 0xff1C1B1B;
   static const int _textColorValue = 0xff1C1B1B;
+  static const int _textColorWhiteValue = 0xffffffff;
 
   // * Colors
   static const Color primaryColor = Color(_primaryColorValue);
   static const Color accentColor = Color(_accentColorValue);
   static const Color backgroundColor = Color(_backgroundColorValue);
   static const Color textColor = Color(_textColorValue);
+  static const Color textColorWhite = Color(_textColorWhiteValue);
 
   // * Shadow Colors
   static const Color hardDropShadowColor = Color(0x26000000);
