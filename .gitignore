@@ -79,3 +79,6 @@ lib/firebase_options.dart
 
 # web
 web/firebase-config.js
+
+
+.flutter-plugins-dependencies
