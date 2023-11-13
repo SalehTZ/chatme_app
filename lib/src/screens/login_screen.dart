@@ -1,8 +1,11 @@
-import 'package:chatme/src/constants/fonts_manager.dart';
-import 'package:chatme/src/constants/values_manager.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/color_manager.dart';
+import '../constants/fonts_manager.dart';
 import '../constants/styles_manager.dart';
+import '../widgets/common_widgets/custom_button.dart';
+import '../widgets/login_screen/login_form.dart';
+import '../widgets/login_screen/login_titles.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -13,13 +16,21 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   Size _size = Size.zero;
+  late GlobalKey<FormState> _formKey;
+  @override
+  void initState() {
+    super.initState();
+    _formKey = GlobalKey<FormState>();
+  }
+
   @override
   Widget build(BuildContext context) {
     _size = MediaQuery.sizeOf(context);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
-        padding: const EdgeInsets.all(AppPadding.p16),
+        padding: EdgeInsets.symmetric(horizontal: _size.width * 0.1),
         child: Center(
           child: SizedBox(
             height: _size.height * 0.6,
@@ -28,41 +39,44 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const LoginTitlesWidget(),
-                TextFormField(),
-                TextFormField(),
+                LoginFormWidget(formKey: _formKey),
+                CustomButton(
+                  onTap: () {},
+                  color: ColorManager.accentColor,
+                  child: SizedBox(
+                    width: _size.width,
+                    height: _size.height * 0.06,
+                    child: Center(
+                      child: Text(
+                        'LOGIN',
+                        style: TextStyles.getSemiBoldStyle(
+                          fontSize: FontSize.s18,
+                          color: ColorManager.textColorWhite,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                CustomButton(
+                  onTap: () {},
+                  child: SizedBox(
+                    width: _size.width,
+                    height: _size.height * 0.06,
+                    child: Center(
+                      child: Text(
+                        'REGISTER',
+                        style: TextStyles.getSemiBoldStyle(
+                          fontSize: FontSize.s14,
+                          color: ColorManager.textColorWhite.withOpacity(0.6),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class LoginTitlesWidget extends StatelessWidget {
-  const LoginTitlesWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
-    return SizedBox(
-      height: size.height * 0.12,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Welcome back!',
-            style: TextStyles.getBoldStyle(
-              color: const Color(0xffffffff),
-              fontSize: FontSize.s20,
-            ),
-          ),
-          Text(
-            'Please login to your account.',
-            style: TextStyles.getBoldStyle(color: const Color(0xffffffff)),
-          ),
-        ],
       ),
     );
   }
