@@ -24,6 +24,7 @@
 **/doc/api/
 .dart_tool/
 .flutter-plugins
+.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
@@ -79,6 +80,3 @@ lib/firebase_options.dart
 
 # web
 web/firebase-config.js
-
-
-.flutter-plugins-dependencies
